@@ -1,0 +1,14 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\etec\\documents\\unreal projects\\temp\\desconexotcc\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\desconexotcc\\permoduleinline.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\etec\\documents\\unreal projects\\temp\\desconexotcc\\intermediate\\build\\win64\\x64\\desconexotcceditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.valexpapi.cpp20.h.pch",
+        "Includes": [
+            "c:\\users\\etec\\documents\\unreal projects\\temp\\desconexotcc\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\desconexotcc\\definitions.desconexotcc.h",
+            "c:\\program files\\epic games\\ue_5.7\\engine\\source\\runtime\\core\\public\\hal\\permoduleinline.inl"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

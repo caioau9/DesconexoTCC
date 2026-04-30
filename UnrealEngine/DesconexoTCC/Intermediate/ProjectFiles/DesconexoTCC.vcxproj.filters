@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Config">
+      <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\DesconexoTCC.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{F31BBDD1-B3E8-3BCC-9652-680E16935819}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\DesconexoTCC.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\DesconexoTCCEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Source\DesconexoTCC">
+      <UniqueIdentifier>{3D2FD3C5-79CC-39F0-A023-1A27599D820A}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\DesconexoTCC\DesconexoTCC.Build.cs">
+      <Filter>Source\DesconexoTCC</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\DesconexoTCC\DesconexoTCC.cpp">
+      <Filter>Source\DesconexoTCC</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\DesconexoTCC\DesconexoTCC.h">
+      <Filter>Source\DesconexoTCC</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

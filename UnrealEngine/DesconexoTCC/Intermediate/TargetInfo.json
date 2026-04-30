@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "DesconexoTCC",
+			"Path": "..\\Source\\DesconexoTCC.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "DesconexoTCCEditor",
+			"Path": "..\\Source\\DesconexoTCCEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
