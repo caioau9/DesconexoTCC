@@ -1,12 +1,12 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "c:\\users\\etec\\documents\\unreal projects\\temp\\desconexotcc\\source\\desconexotcc\\desconexotcc.cpp",
+        "Source": "c:\\users\\etec\\documents\\unreal projects\\desconexotcc\\unrealengine\\desconexotcc\\source\\desconexotcc\\desconexotcc.cpp",
         "ProvidedModule": "",
-        "PCH": "c:\\users\\etec\\documents\\unreal projects\\temp\\desconexotcc\\intermediate\\build\\win64\\x64\\desconexotcceditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.valexpapi.cpp20.h.pch",
+        "PCH": "c:\\users\\etec\\documents\\unreal projects\\desconexotcc\\unrealengine\\desconexotcc\\intermediate\\build\\win64\\x64\\desconexotcceditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.valexpapi.cpp20.h.pch",
         "Includes": [
-            "c:\\users\\etec\\documents\\unreal projects\\temp\\desconexotcc\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\desconexotcc\\definitions.desconexotcc.h",
-            "c:\\users\\etec\\documents\\unreal projects\\temp\\desconexotcc\\source\\desconexotcc\\desconexotcc.h"
+            "c:\\users\\etec\\documents\\unreal projects\\desconexotcc\\unrealengine\\desconexotcc\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\desconexotcc\\definitions.desconexotcc.h",
+            "c:\\users\\etec\\documents\\unreal projects\\desconexotcc\\unrealengine\\desconexotcc\\source\\desconexotcc\\desconexotcc.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

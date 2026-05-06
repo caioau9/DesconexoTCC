@@ -1,4 +1,4 @@
-"C:/Users/etec/Documents/Unreal Projects/Temp/DesconexoTCC/Intermediate/Build/Win64/x64/DesconexoTCCEditor/Development/Core/SharedPCH.Core.Cpp20.cpp"
+"C:/Users/etec/Documents/Unreal Projects/DesconexoTCC/UnrealEngine/DesconexoTCC/Intermediate/Build/Win64/x64/DesconexoTCCEditor/Development/Core/SharedPCH.Core.Cpp20.cpp"
 /I "."
 /I "Runtime/Core/Public"
 /I "Runtime/Core/Internal"
@@ -15,10 +15,10 @@
 /external:I "C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/um"
 /external:I "C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/winrt"
 /Yc"SharedPCH.Core.Cpp20.h"
-/Fp"C:/Users/etec/Documents/Unreal Projects/Temp/DesconexoTCC/Intermediate/Build/Win64/x64/DesconexoTCCEditor/Development/Core/SharedPCH.Core.Cpp20.h.pch"
-/Fo"C:/Users/etec/Documents/Unreal Projects/Temp/DesconexoTCC/Intermediate/Build/Win64/x64/DesconexoTCCEditor/Development/Core/SharedPCH.Core.Cpp20.h.obj"
-/experimental:log "C:/Users/etec/Documents/Unreal Projects/Temp/DesconexoTCC/Intermediate/Build/Win64/x64/DesconexoTCCEditor/Development/Core/SharedPCH.Core.Cpp20.h.sarif"
-/sourceDependencies "C:/Users/etec/Documents/Unreal Projects/Temp/DesconexoTCC/Intermediate/Build/Win64/x64/DesconexoTCCEditor/Development/Core/SharedPCH.Core.Cpp20.h.dep.json"
+/Fp"C:/Users/etec/Documents/Unreal Projects/DesconexoTCC/UnrealEngine/DesconexoTCC/Intermediate/Build/Win64/x64/DesconexoTCCEditor/Development/Core/SharedPCH.Core.Cpp20.h.pch"
+/Fo"C:/Users/etec/Documents/Unreal Projects/DesconexoTCC/UnrealEngine/DesconexoTCC/Intermediate/Build/Win64/x64/DesconexoTCCEditor/Development/Core/SharedPCH.Core.Cpp20.h.obj"
+/experimental:log "C:/Users/etec/Documents/Unreal Projects/DesconexoTCC/UnrealEngine/DesconexoTCC/Intermediate/Build/Win64/x64/DesconexoTCCEditor/Development/Core/SharedPCH.Core.Cpp20.h.sarif"
+/sourceDependencies "C:/Users/etec/Documents/Unreal Projects/DesconexoTCC/UnrealEngine/DesconexoTCC/Intermediate/Build/Win64/x64/DesconexoTCCEditor/Development/Core/SharedPCH.Core.Cpp20.h.dep.json"
 /nologo
 /Oi
 /FC

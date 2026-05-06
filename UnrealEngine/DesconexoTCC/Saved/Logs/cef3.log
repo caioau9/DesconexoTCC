@@ -1,5 +1,15 @@
-[3260:10088:0430/122352.535:WARNING:chrome_main_delegate.cc(745)] This is Chrome version 128.0.6613.138 (not a warning)
-[3260:2708:0430/122352.605:ERROR:google_update_settings.cc(265)] Failed opening key Software\Chromium to set usagestats; result: 5
-[3260:10088:0430/122352.653:WARNING:account_consistency_mode_manager.cc(77)] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
-[1548:11336:0430/122357.297:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame 5-EBD92AA39971AB1B507A7CF4AB93D487 will be ignored
-[3260:10088:0430/122415.744:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
+[908:9328:0506/121222.642:WARNING:chrome_main_delegate.cc(745)] This is Chrome version 128.0.6613.138 (not a warning)
+[908:7028:0506/121222.698:ERROR:google_update_settings.cc(265)] Failed opening key Software\Chromium to set usagestats; result: 5
+[908:9328:0506/121222.830:WARNING:account_consistency_mode_manager.cc(77)] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[908:13216:0506/121228.142:WARNING:leveldb_database.cc(141)] Unable to open C:\Users\etec\Documents\Unreal Projects\DesconexoTCC\UnrealEngine\DesconexoTCC\Saved\webcache_6613\Default\shared_proto_db\metadata: IO error: C:\Users\etec\Documents\Unreal Projects\DesconexoTCC\UnrealEngine\DesconexoTCC\Saved\webcache_6613\Default\shared_proto_db\metadata/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[908:13216:0506/121228.241:WARNING:leveldb_database.cc(141)] Unable to open C:\Users\etec\Documents\Unreal Projects\DesconexoTCC\UnrealEngine\DesconexoTCC\Saved\webcache_6613\Default\shared_proto_db\metadata: IO error: C:\Users\etec\Documents\Unreal Projects\DesconexoTCC\UnrealEngine\DesconexoTCC\Saved\webcache_6613\Default\shared_proto_db\metadata/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[908:13216:0506/121228.245:WARNING:leveldb_database.cc(141)] Unable to open C:\Users\etec\Documents\Unreal Projects\DesconexoTCC\UnrealEngine\DesconexoTCC\Saved\webcache_6613\Default\shared_proto_db\metadata: IO error: C:\Users\etec\Documents\Unreal Projects\DesconexoTCC\UnrealEngine\DesconexoTCC\Saved\webcache_6613\Default\shared_proto_db\metadata/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[908:13216:0506/121228.247:WARNING:leveldb_database.cc(141)] Unable to open C:\Users\etec\Documents\Unreal Projects\DesconexoTCC\UnrealEngine\DesconexoTCC\Saved\webcache_6613\Default\shared_proto_db\metadata: IO error: C:\Users\etec\Documents\Unreal Projects\DesconexoTCC\UnrealEngine\DesconexoTCC\Saved\webcache_6613\Default\shared_proto_db\metadata/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[908:13216:0506/121229.102:WARNING:value_store_frontend.cc(47)] Reading ahfgeienlihckogmohjhadlkjgocpleb.alarms from  failed: IO error: .../MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[908:13216:0506/121229.106:WARNING:value_store_frontend.cc(47)] Reading mhjfbmdgcfjbbpaeojofohoefgiehjai.alarms from  failed: IO error: .../MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[10152:2040:0506/121230.408:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame 5-9788976DBC3DAECD562F1AC1B6C2BCF8 will be ignored
+[7760:5896:0506/121447.611:WARNING:dns_config_service_win.cc(605)] Failed to read DnsConfig.
+[908:12924:0506/121447.611:WARNING:dns_config_service_win.cc(605)] Failed to read DnsConfig.
+[908:13216:0506/121452.618:WARNING:dns_config_service_win.cc(605)] Failed to read DnsConfig.
+[7760:5896:0506/121452.628:WARNING:dns_config_service_win.cc(605)] Failed to read DnsConfig.
+[908:9328:0506/122825.120:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.

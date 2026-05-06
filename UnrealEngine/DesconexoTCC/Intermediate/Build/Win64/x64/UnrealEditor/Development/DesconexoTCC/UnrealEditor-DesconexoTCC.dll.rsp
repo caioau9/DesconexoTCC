@@ -36,10 +36,10 @@
 /FUNCTIONPADMIN:6
 /NOIMPLIB
 /NOEXP
-"C:/Users/etec/Documents/Unreal Projects/Temp/DesconexoTCC/Intermediate/Build/Win64/x64/DesconexoTCCEditor/Development/UnrealEd/SharedPCH.UnrealEd.Project.ValApi.ValExpApi.Cpp20.h.obj"
-"C:/Users/etec/Documents/Unreal Projects/Temp/DesconexoTCC/Intermediate/Build/Win64/x64/UnrealEditor/Development/DesconexoTCC/DesconexoTCC.cpp.obj"
-"C:/Users/etec/Documents/Unreal Projects/Temp/DesconexoTCC/Intermediate/Build/Win64/x64/UnrealEditor/Development/DesconexoTCC/PerModuleInline.gen.cpp.obj"
-"C:/Users/etec/Documents/Unreal Projects/Temp/DesconexoTCC/Intermediate/Build/Win64/x64/UnrealEditor/Development/DesconexoTCC/Default.rc2.res"
+"C:/Users/etec/Documents/Unreal Projects/DesconexoTCC/UnrealEngine/DesconexoTCC/Intermediate/Build/Win64/x64/DesconexoTCCEditor/Development/UnrealEd/SharedPCH.UnrealEd.Project.ValApi.ValExpApi.Cpp20.h.obj"
+"C:/Users/etec/Documents/Unreal Projects/DesconexoTCC/UnrealEngine/DesconexoTCC/Intermediate/Build/Win64/x64/UnrealEditor/Development/DesconexoTCC/DesconexoTCC.cpp.obj"
+"C:/Users/etec/Documents/Unreal Projects/DesconexoTCC/UnrealEngine/DesconexoTCC/Intermediate/Build/Win64/x64/UnrealEditor/Development/DesconexoTCC/PerModuleInline.gen.cpp.obj"
+"C:/Users/etec/Documents/Unreal Projects/DesconexoTCC/UnrealEngine/DesconexoTCC/Intermediate/Build/Win64/x64/UnrealEditor/Development/DesconexoTCC/Default.rc2.res"
 "../Intermediate/Build/Win64/x64/UnrealEditor/Development/Core/UnrealEditor-Core.lib"
 "../Intermediate/Build/Win64/x64/UnrealEditor/Development/CoreUObject/UnrealEditor-CoreUObject.lib"
 "../Intermediate/Build/Win64/x64/UnrealEditor/Development/Engine/UnrealEditor-Engine.lib"
@@ -70,6 +70,6 @@
 "synchronization.lib"
 "dwmapi.lib"
 "imm32.lib"
-/OUT:"C:/Users/etec/Documents/Unreal Projects/Temp/DesconexoTCC/Binaries/Win64/UnrealEditor-DesconexoTCC.dll"
-/PDB:"C:/Users/etec/Documents/Unreal Projects/Temp/DesconexoTCC/Binaries/Win64/UnrealEditor-DesconexoTCC.pdb"
+/OUT:"C:/Users/etec/Documents/Unreal Projects/DesconexoTCC/UnrealEngine/DesconexoTCC/Binaries/Win64/UnrealEditor-DesconexoTCC.dll"
+/PDB:"C:/Users/etec/Documents/Unreal Projects/DesconexoTCC/UnrealEngine/DesconexoTCC/Binaries/Win64/UnrealEditor-DesconexoTCC.pdb"
 /ignore:4078

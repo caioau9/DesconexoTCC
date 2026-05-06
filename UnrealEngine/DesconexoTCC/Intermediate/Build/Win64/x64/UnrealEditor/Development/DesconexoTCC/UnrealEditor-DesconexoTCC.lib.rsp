@@ -6,8 +6,8 @@
 /NAME:"UnrealEditor-DesconexoTCC.dll"
 /IGNORE:4221
 /NODEFAULTLIB
-"C:/Users/etec/Documents/Unreal Projects/Temp/DesconexoTCC/Intermediate/Build/Win64/x64/DesconexoTCCEditor/Development/UnrealEd/SharedPCH.UnrealEd.Project.ValApi.ValExpApi.Cpp20.h.obj"
-"C:/Users/etec/Documents/Unreal Projects/Temp/DesconexoTCC/Intermediate/Build/Win64/x64/UnrealEditor/Development/DesconexoTCC/DesconexoTCC.cpp.obj"
-"C:/Users/etec/Documents/Unreal Projects/Temp/DesconexoTCC/Intermediate/Build/Win64/x64/UnrealEditor/Development/DesconexoTCC/PerModuleInline.gen.cpp.obj"
-"C:/Users/etec/Documents/Unreal Projects/Temp/DesconexoTCC/Intermediate/Build/Win64/x64/UnrealEditor/Development/DesconexoTCC/Default.rc2.res"
-/OUT:"C:/Users/etec/Documents/Unreal Projects/Temp/DesconexoTCC/Intermediate/Build/Win64/x64/UnrealEditor/Development/DesconexoTCC/UnrealEditor-DesconexoTCC.lib"
+"C:/Users/etec/Documents/Unreal Projects/DesconexoTCC/UnrealEngine/DesconexoTCC/Intermediate/Build/Win64/x64/DesconexoTCCEditor/Development/UnrealEd/SharedPCH.UnrealEd.Project.ValApi.ValExpApi.Cpp20.h.obj"
+"C:/Users/etec/Documents/Unreal Projects/DesconexoTCC/UnrealEngine/DesconexoTCC/Intermediate/Build/Win64/x64/UnrealEditor/Development/DesconexoTCC/DesconexoTCC.cpp.obj"
+"C:/Users/etec/Documents/Unreal Projects/DesconexoTCC/UnrealEngine/DesconexoTCC/Intermediate/Build/Win64/x64/UnrealEditor/Development/DesconexoTCC/PerModuleInline.gen.cpp.obj"
+"C:/Users/etec/Documents/Unreal Projects/DesconexoTCC/UnrealEngine/DesconexoTCC/Intermediate/Build/Win64/x64/UnrealEditor/Development/DesconexoTCC/Default.rc2.res"
+/OUT:"C:/Users/etec/Documents/Unreal Projects/DesconexoTCC/UnrealEngine/DesconexoTCC/Intermediate/Build/Win64/x64/UnrealEditor/Development/DesconexoTCC/UnrealEditor-DesconexoTCC.lib"

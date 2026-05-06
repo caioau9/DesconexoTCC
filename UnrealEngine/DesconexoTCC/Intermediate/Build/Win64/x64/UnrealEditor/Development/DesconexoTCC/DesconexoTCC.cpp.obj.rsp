@@ -1,12 +1,12 @@
-"C:/Users/etec/Documents/Unreal Projects/Temp/DesconexoTCC/Source/DesconexoTCC/DesconexoTCC.cpp"
-@"C:/Users/etec/Documents/Unreal Projects/Temp/DesconexoTCC/Intermediate/Build/Win64/x64/UnrealEditor/Development/DesconexoTCC/DesconexoTCC.Shared.rsp"
-/FI"C:/Users/etec/Documents/Unreal Projects/Temp/DesconexoTCC/Intermediate/Build/Win64/x64/DesconexoTCCEditor/Development/UnrealEd/SharedPCH.UnrealEd.Project.ValApi.ValExpApi.Cpp20.h"
-/FI"C:/Users/etec/Documents/Unreal Projects/Temp/DesconexoTCC/Intermediate/Build/Win64/x64/UnrealEditor/Development/DesconexoTCC/Definitions.DesconexoTCC.h"
-/Yu"C:/Users/etec/Documents/Unreal Projects/Temp/DesconexoTCC/Intermediate/Build/Win64/x64/DesconexoTCCEditor/Development/UnrealEd/SharedPCH.UnrealEd.Project.ValApi.ValExpApi.Cpp20.h"
-/Fp"C:/Users/etec/Documents/Unreal Projects/Temp/DesconexoTCC/Intermediate/Build/Win64/x64/DesconexoTCCEditor/Development/UnrealEd/SharedPCH.UnrealEd.Project.ValApi.ValExpApi.Cpp20.h.pch"
-/Fo"C:/Users/etec/Documents/Unreal Projects/Temp/DesconexoTCC/Intermediate/Build/Win64/x64/UnrealEditor/Development/DesconexoTCC/DesconexoTCC.cpp.obj"
-/experimental:log "C:/Users/etec/Documents/Unreal Projects/Temp/DesconexoTCC/Intermediate/Build/Win64/x64/UnrealEditor/Development/DesconexoTCC/DesconexoTCC.cpp.sarif"
-/sourceDependencies "C:/Users/etec/Documents/Unreal Projects/Temp/DesconexoTCC/Intermediate/Build/Win64/x64/UnrealEditor/Development/DesconexoTCC/DesconexoTCC.cpp.dep.json"
+"C:/Users/etec/Documents/Unreal Projects/DesconexoTCC/UnrealEngine/DesconexoTCC/Source/DesconexoTCC/DesconexoTCC.cpp"
+@"C:/Users/etec/Documents/Unreal Projects/DesconexoTCC/UnrealEngine/DesconexoTCC/Intermediate/Build/Win64/x64/UnrealEditor/Development/DesconexoTCC/DesconexoTCC.Shared.rsp"
+/FI"C:/Users/etec/Documents/Unreal Projects/DesconexoTCC/UnrealEngine/DesconexoTCC/Intermediate/Build/Win64/x64/DesconexoTCCEditor/Development/UnrealEd/SharedPCH.UnrealEd.Project.ValApi.ValExpApi.Cpp20.h"
+/FI"C:/Users/etec/Documents/Unreal Projects/DesconexoTCC/UnrealEngine/DesconexoTCC/Intermediate/Build/Win64/x64/UnrealEditor/Development/DesconexoTCC/Definitions.DesconexoTCC.h"
+/Yu"C:/Users/etec/Documents/Unreal Projects/DesconexoTCC/UnrealEngine/DesconexoTCC/Intermediate/Build/Win64/x64/DesconexoTCCEditor/Development/UnrealEd/SharedPCH.UnrealEd.Project.ValApi.ValExpApi.Cpp20.h"
+/Fp"C:/Users/etec/Documents/Unreal Projects/DesconexoTCC/UnrealEngine/DesconexoTCC/Intermediate/Build/Win64/x64/DesconexoTCCEditor/Development/UnrealEd/SharedPCH.UnrealEd.Project.ValApi.ValExpApi.Cpp20.h.pch"
+/Fo"C:/Users/etec/Documents/Unreal Projects/DesconexoTCC/UnrealEngine/DesconexoTCC/Intermediate/Build/Win64/x64/UnrealEditor/Development/DesconexoTCC/DesconexoTCC.cpp.obj"
+/experimental:log "C:/Users/etec/Documents/Unreal Projects/DesconexoTCC/UnrealEngine/DesconexoTCC/Intermediate/Build/Win64/x64/UnrealEditor/Development/DesconexoTCC/DesconexoTCC.cpp.sarif"
+/sourceDependencies "C:/Users/etec/Documents/Unreal Projects/DesconexoTCC/UnrealEngine/DesconexoTCC/Intermediate/Build/Win64/x64/UnrealEditor/Development/DesconexoTCC/DesconexoTCC.cpp.dep.json"
 /nologo
 /Oi
 /FC
