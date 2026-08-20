@@ -1,0 +1,123 @@
+﻿(() => {
+'use strict';
+const canvas = document.getElementById('game');
+const engine = new BABYLON.Engine(canvas, true, {preserveDrawingBuffer:true, stencil:true});
+const ui = Object.fromEntries(['prompt','objective','status','subtitle','startScreen','note','album'].map(id=>[id,document.getElementById(id)]));
+const defaultState = {key:false,door:false,note:false,medicine:false,tv:false,distorted:false,finished:false};
+let state = Object.assign({}, defaultState, JSON.parse(localStorage.getItem('desconexo-save') || '{}'));
+let scene, camera, player, interactables=[], currentTarget=null, controlsLocked=true, distortionLight, normalLight, tvScreen;
+const save=()=>localStorage.setItem('desconexo-save',JSON.stringify(state));
+const mat=(name,color,emissive)=>{const m=new BABYLON.StandardMaterial(name,scene);m.diffuseColor=BABYLON.Color3.FromHexString(color);m.specularColor=new BABYLON.Color3(.05,.05,.05);if(emissive)m.emissiveColor=BABYLON.Color3.FromHexString(emissive);return m};
+function box(name,pos,scale,material,parent){const b=BABYLON.MeshBuilder.CreateBox(name,{width:scale.x,height:scale.y,depth:scale.z},scene);b.position=pos;b.material=material;if(parent)b.parent=parent;b.checkCollisions=true;return b}
+function addInteract(mesh,prompt,range,action,enabled=()=>true){interactables.push({mesh,prompt,range,action,enabled});mesh.metadata={interactable:true}}
+function subtitle(text,ms=2800){ui.subtitle.textContent=text;ui.subtitle.style.opacity=1;clearTimeout(subtitle.t);subtitle.t=setTimeout(()=>ui.subtitle.style.opacity=0,ms)}
+function setObjective(){let t='';if(!state.key)t='Search the bedroom for a way out.';else if(!state.door)t='Unlock the bedroom door.';else if(!state.note)t='Explore the upstairs landing.';else if(!state.medicine)t='Inspect the upstairs bathroom.';else if(!state.tv)t='Descend and investigate the television.';else if(state.distorted)t='Return to the bathroom and take the medicine.';else t='Vertical slice complete. Explore or reset from the menu.';ui.objective.textContent=t;ui.status.textContent=`KEY ${state.key?'âœ“':'Â·'}  |  DIARY ${state.note?'âœ“':'Â·'}  |  MEDICINE ${state.medicine?'âœ“':'Â·'}`}
+function showPanel(el){controlsLocked=true;document.exitPointerLock?.();el.classList.add('visible')}
+function hidePanel(el){el.classList.remove('visible');controlsLocked=false;canvas.requestPointerLock?.()}
+function createScene(){
+ scene=new BABYLON.Scene(engine);scene.clearColor=new BABYLON.Color4(.035,.035,.045,1);scene.collisionsEnabled=true;scene.gravity=new BABYLON.Vector3(0,-.32,0);
+ camera=new BABYLON.UniversalCamera('player',new BABYLON.Vector3(0,1.65,5),scene);camera.attachControl(canvas,true);/* DESCONEXO_RAW_MOUSE_V5 */camera.inertia=0;camera.angularSensibility=2650;camera.speed=.085;camera.minZ=.05;camera.applyGravity=true;camera.checkCollisions=true;camera.ellipsoid=new BABYLON.Vector3(.35,.82,.35);camera.keysUp=[87];camera.keysDown=[83];camera.keysLeft=[65];camera.keysRight=[68];
+ normalLight=new BABYLON.HemisphericLight('moon',new BABYLON.Vector3(0,1,0),scene);normalLight.intensity=.72;normalLight.diffuse=new BABYLON.Color3(.82,.80,.72);normalLight.groundColor=new BABYLON.Color3(.18,.16,.14);
+ distortionLight=new BABYLON.PointLight('red',new BABYLON.Vector3(0,2.2,-8),scene);distortionLight.diffuse=new BABYLON.Color3(.7,.02,.02);distortionLight.intensity=0;distortionLight.range=15;
+ const wall=mat('wall','#45433d'),floor=mat('floor','#3b2d25'),wood=mat('wood','#553526'),dark=mat('dark','#0d0b0a'),paper=mat('paper','#b8aa8a'),brass=mat('brass','#8d6a25','#130d02'),red=mat('red','#4a0c12'),screen=mat('screen','#7d7b71','#22251e');
+ // Long narrow house: bedroom z 3..8, landing -2..3, living room -13..-2, bathroom x 4..8.
+ box('floor',new BABYLON.Vector3(0,0,0),new BABYLON.Vector3(12,.2,30),floor);
+ box('ceiling',new BABYLON.Vector3(0,3.3,0),new BABYLON.Vector3(12,.2,30),dark);
+ box('leftWall',new BABYLON.Vector3(-6,1.65,0),new BABYLON.Vector3(.2,3.3,30),wall);box('rightWall',new BABYLON.Vector3(6,1.65,0),new BABYLON.Vector3(.2,3.3,30),wall);
+ box('northWall',new BABYLON.Vector3(0,1.65,15),new BABYLON.Vector3(12,3.3,.2),wall);box('southWall',new BABYLON.Vector3(0,1.65,-15),new BABYLON.Vector3(12,3.3,.2),wall);
+ // Bedroom divider with door gap.
+ box('dividerL',new BABYLON.Vector3(-3.2,1.65,3),new BABYLON.Vector3(5.6,3.3,.22),wall);box('dividerR',new BABYLON.Vector3(3.2,1.65,3),new BABYLON.Vector3(5.6,3.3,.22),wall);box('lintel',new BABYLON.Vector3(0,2.8,3),new BABYLON.Vector3(.9,1,.22),wall);
+ const door=box('bedroomDoor',new BABYLON.Vector3(0,1.25,3.02),new BABYLON.Vector3(.85,2.5,.16),wood);door.checkCollisions=!state.door;if(state.door){door.rotation.y=Math.PI/2;door.position.x=.45}
+ addInteract(door,()=>state.key?'[E] Unlock door':'The door is locked',2.2,()=>{if(!state.key){subtitle('Locked. The key must be somewhere in this room.');return}state.door=true;door.checkCollisions=false;BABYLON.Animation.CreateAndStartAnimation('open',door,'rotation.y',30,24,0,Math.PI/2,0);subtitle('The key turns with a dry metallic click.');save();setObjective()},()=>!state.door);
+ // Bed and album.
+ box('bed',new BABYLON.Vector3(-2.8,.45,10),new BABYLON.Vector3(3,.9,4.6),wood);box('mattress',new BABYLON.Vector3(-2.8,1,10),new BABYLON.Vector3(2.8,.35,4.3),mat('mattress','#777064'));
+ const album=box('album',new BABYLON.Vector3(-2.8,1.24,9.25),new BABYLON.Vector3(.8,.12,1),red);album.rotation.y=.12;
+ const albumGlow=new BABYLON.PointLight('albumGlow',new BABYLON.Vector3(-2.8,1.7,9.25),scene);albumGlow.diffuse=new BABYLON.Color3(.8,.48,.18);albumGlow.intensity=1.1;albumGlow.range=3.2;
+ const keyMesh=box('visibleKey',new BABYLON.Vector3(-2.8,1.36,9.25),new BABYLON.Vector3(.12,.05,.52),brass);keyMesh.checkCollisions=false;
+ const keyRing=BABYLON.MeshBuilder.CreateTorus('keyRing',{diameter:.28,thickness:.06,tessellation:24},scene);keyRing.position=new BABYLON.Vector3(-2.8,1.39,9.48);keyRing.rotation.x=Math.PI/2;keyRing.material=brass;keyRing.checkCollisions=false;
+ addInteract(album,'[E] Inspect album and key',2.5,()=>showPanel(ui.album),()=>!state.key);
+ if(state.key){albumGlow.intensity=0;keyMesh.isVisible=false;keyRing.isVisible=false;}
+ window.__desconexoKeyVisuals={albumGlow,keyMesh,keyRing};
+ // Wardrobe marks.
+ const wardrobe=box('wardrobe',new BABYLON.Vector3(3.8,1.4,11.8),new BABYLON.Vector3(2.2,2.8,1.1),wood);addInteract(wardrobe,'[E] Inspect marks',2.2,()=>subtitle('Deep scratches score the wood from the inside.'));
+ // Landing table and note.
+ box('table',new BABYLON.Vector3(-3.7,.65,0),new BABYLON.Vector3(2,1.3,1),wood);const note=box('diary',new BABYLON.Vector3(-3.7,1.34,0),new BABYLON.Vector3(.65,.04,.45),paper);addInteract(note,'[E] Read diary page',2,()=>{state.note=true;save();setObjective();showPanel(ui.note)});
+ // Bathroom alcove, medicine.
+ box('bathWall',new BABYLON.Vector3(3,1.65,0),new BABYLON.Vector3(.2,3.3,6),wall);box('bathBack',new BABYLON.Vector3(4.5,1.65,-3),new BABYLON.Vector3(3,3.3,.2),wall);box('sink',new BABYLON.Vector3(4.5,.8,-1.7),new BABYLON.Vector3(1.4,.3,.75),paper);
+ const med=box('medicine',new BABYLON.Vector3(4.5,1.18,-1.7),new BABYLON.Vector3(.18,.45,.18),brass);addInteract(med,()=>state.distorted?'[E] Take medicine':'[E] Inspect medicine',2,()=>{if(state.distorted){state.distorted=false;state.finished=true;applyReality();subtitle('Silence. The house is still again.',3500)}else{state.medicine=true;subtitle('The label reads: twice a day.');save();setObjective()}},()=>!state.finished);
+ // Living room furniture and TV.
+ box('rug',new BABYLON.Vector3(0,.12,-8),new BABYLON.Vector3(5,.03,6),red);box('chair',new BABYLON.Vector3(0,.65,-6),new BABYLON.Vector3(1.8,1.3,1.8),wood);
+ box('tvBody',new BABYLON.Vector3(0,1.4,-12.8),new BABYLON.Vector3(3,2.1,.8),dark);tvScreen=box('tvScreen',new BABYLON.Vector3(0,1.5,-12.35),new BABYLON.Vector3(2.5,1.55,.04),screen);addInteract(tvScreen,'[E] Watch television',2.8,()=>triggerTV(),()=>state.medicine&&!state.tv);
+ // eerie silhouette behind screen during distortion
+ const figure=box('figure',new BABYLON.Vector3(0,1.55,-11.95),new BABYLON.Vector3(.7,2.5,.22),dark);figure.isVisible=false;figure.metadata={distortionFigure:true};
+ // Stair illusion marker between landing/living room.
+ for(let i=0;i<5;i++)box('step'+i,new BABYLON.Vector3(-3.8+i*.75,.12+i*.08,-3.1-i*.55),new BABYLON.Vector3(.8,.2,1),wood);
+ applyReality();setObjective();return scene;
+}
+function triggerTV(){state.tv=true;state.distorted=true;save();subtitle('Take the medicine... Take the medicine...',4800);applyReality();setObjective();camera.fov=.72;setTimeout(()=>camera.fov=.8,1200)}
+function applyReality(){document.body.classList.toggle('distorted',state.distorted);normalLight.intensity=state.distorted?.16:.72;distortionLight.intensity=state.distorted?2.1:0;if(tvScreen){tvScreen.material.emissiveColor=state.distorted?new BABYLON.Color3(.55,.01,.01):new BABYLON.Color3(.13,.15,.12);scene.meshes.filter(m=>m.metadata?.distortionFigure).forEach(m=>m.isVisible=state.distorted)}save();setObjective()}
+scene=createScene();
+scene.onBeforeRenderObservable.add(()=>{if(controlsLocked){ui.prompt.textContent='';return}const ray=camera.getForwardRay(3);let best=null,bestDist=999;for(const it of interactables){if(!it.enabled())continue;const hit=ray.intersectsMesh(it.mesh,false);if(hit.hit&&hit.distance<it.range&&hit.distance<bestDist){best=it;bestDist=hit.distance}}currentTarget=best;ui.prompt.textContent=best?(typeof best.prompt==='function'?best.prompt():best.prompt):'';if(state.distorted)camera.rotation.z=Math.sin(performance.now()/180)*.003});
+/* DESCONEXO_SAFE_MOVEMENT_V3 */
+const motionInput={shift:false,focus:false,w:false,a:false,s:false,d:false};
+/* DESCONEXO_MOUSE_PRECISION_V4 */
+const motionPrefs=Object.assign({sensitivity:1},JSON.parse(localStorage.getItem('desconexo-motion')||'{}'));
+// Rebase existing saves so the new 100% starts from the intended slower baseline.
+if(!motionPrefs.precisionV4){motionPrefs.sensitivity=1;motionPrefs.precisionV4=true;}
+let bobClock=0,lastBobY=0,lastBobX=0,roll=0;
+function updateSensitivity(show=false){
+  motionPrefs.sensitivity=Math.max(.25,Math.min(2.0,motionPrefs.sensitivity));
+  camera.angularSensibility=2650/motionPrefs.sensitivity;
+  localStorage.setItem('desconexo-motion',JSON.stringify(motionPrefs));
+  if(show)subtitle(`Mouse sensitivity: ${Math.round(motionPrefs.sensitivity*100)}%`,1200);
+}
+function motionKey(code,value){
+  if(code==='ShiftLeft'||code==='ShiftRight')motionInput.shift=value;
+  if(code==='KeyQ')motionInput.focus=value;
+  if(code==='KeyW')motionInput.w=value;
+  if(code==='KeyA')motionInput.a=value;
+  if(code==='KeyS')motionInput.s=value;
+  if(code==='KeyD')motionInput.d=value;
+}
+window.addEventListener('keydown',e=>{
+  motionKey(e.code,true);
+  if(e.code==='BracketLeft'||e.code==='Minus'){motionPrefs.sensitivity-=.05;updateSensitivity(true)}
+  if(e.code==='BracketRight'||e.code==='Equal'){motionPrefs.sensitivity+=.05;updateSensitivity(true)}
+});
+window.addEventListener('keyup',e=>motionKey(e.code,false));
+window.addEventListener('blur',()=>Object.keys(motionInput).forEach(k=>motionInput[k]=false));
+updateSensitivity(false);
+scene.onBeforeRenderObservable.add(()=>{
+  const dt=Math.min(engine.getDeltaTime()/1000,.05);
+  camera.position.y-=lastBobY;camera.position.x-=lastBobX;lastBobY=0;lastBobX=0;
+  if(controlsLocked)return;
+  const moving=motionInput.w||motionInput.a||motionInput.s||motionInput.d;
+  const running=motionInput.shift&&moving&&!motionInput.focus&&!motionInput.s;
+  camera.speed=motionInput.focus?.047:(running?.155:.085);
+  const targetFov=motionInput.focus?.58:(running?.88:.80);
+  camera.fov+=(targetFov-camera.fov)*Math.min(1,dt*8.5);
+  if(moving){
+    bobClock+=dt*(running?12.2:8.4);
+    lastBobY=Math.sin(bobClock*2)*(running?.047:.028);
+    lastBobX=Math.cos(bobClock)*(running?.021:.012);
+  }else if(motionInput.focus){
+    bobClock+=dt*1.2;lastBobY=Math.sin(bobClock)*.0035;
+  }
+  camera.position.y+=lastBobY;camera.position.x+=lastBobX;
+  const strafe=(motionInput.d?1:0)-(motionInput.a?1:0);
+  const targetRoll=strafe*(running?-.018:-.010);
+  roll+=(targetRoll-roll)*Math.min(1,dt*9);
+  camera.rotation.z=roll+(state.distorted?Math.sin(performance.now()/180)*.003:0);
+});
+window.addEventListener('keydown',e=>{if(e.code==='KeyE'&&currentTarget&&!controlsLocked)currentTarget.action()});
+document.getElementById('startButton').onclick=()=>{ui.startScreen.classList.remove('visible');controlsLocked=false;canvas.requestPointerLock?.();if(state.finished)subtitle('The prototype is complete. The house remembers.')};
+document.getElementById('resetButton').onclick=()=>{localStorage.removeItem('desconexo-save');location.reload()};
+document.getElementById('closeNote').onclick=()=>hidePanel(ui.note);
+document.getElementById('takeKey').onclick=()=>{state.key=true;if(window.__desconexoKeyVisuals){window.__desconexoKeyVisuals.albumGlow.intensity=0;window.__desconexoKeyVisuals.keyMesh.isVisible=false;window.__desconexoKeyVisuals.keyRing.isVisible=false;}save();setObjective();hidePanel(ui.album);subtitle('A small brass key. It should fit the bedroom door.')};
+canvas.addEventListener('click',()=>{if(!controlsLocked&&!document.pointerLockElement)canvas.requestPointerLock?.()});
+window.addEventListener('resize',()=>engine.resize());engine.runRenderLoop(()=>scene.render());
+})();
+
+
+
+
