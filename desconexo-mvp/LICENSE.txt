@@ -1,1 +1,0 @@
-Prototype code generated for the DESCONEXO academic game project. Babylon.js is loaded separately from its CDN and remains subject to its own license.
